@@ -7,7 +7,7 @@ export const MainContainer = styled.div`
   width: 75%;
 
   h2 {
-    font-size: 40px;
+    font-size: clamp(26px, 2vw, 40px);
     margin: 0px 0px 15px;
     font-weight: 350;
   }
@@ -16,7 +16,7 @@ export const MainContainer = styled.div`
   ol,
   li {
     margin: 10px 0px;
-    font-size: 20px;
+    font-size: clamp(16px, 2vw, 20px);
     line-height: 1.5625em;
     color: #595959;
     letter-spacing: 0.03rem;
@@ -27,13 +27,13 @@ export const MainContainer = styled.div`
     padding: 0px 5px;
   }
   .wp-block-spacer {
-    height: 50px;
+    height: 40px;
   }
   strong {
     font-weight: bolder;
   }
   .wp-block-pullquote p {
-    font-size: 26px;
+    font-size: clamp(16px, 3vw, 26px);
     color: #ff661a;
     font-weight: 800;
     border: 1px solid #ff661a;
@@ -42,10 +42,18 @@ export const MainContainer = styled.div`
     line-height: 1.5em;
     letter-spacing: -0.04em;
     padding: 40px;
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
   }
   font-family: sans-serif;
   box-sizing: border-box;
   padding: 52px;
+  @media (max-width: 768px) {
+    padding: 26px 0;
+    width: 90%;
+    margin: auto;
+  }
 `;
 
 export const StickyTop = styled.div`
@@ -56,10 +64,7 @@ export const StickyTop = styled.div`
 
 export const TopStrip = styled.div`
   background: #595959;
-  display: flex;
   font-size: 16px;
-  align-items: center;
-  justify-content: center;
   padding: 16px 0;
   .readMore {
     color: #5feae6;
@@ -85,14 +90,9 @@ export const TopStrip = styled.div`
   }
   p {
     color: white;
-    font-weight: 800;
-  }
-  .partition {
-    border-top: 1px solid #eee;
-    width: 30px;
-    display: block;
-    height: 1px;
-    rotate: 90deg;
+    font-weight: 700;
+    text-align: center;
+    padding: 0 10px;
   }
 `;
 
@@ -106,7 +106,6 @@ export const NavSubMenu = styled.div`
   padding: 16px 20px;
   border-radius: 10px;
   box-shadow: 1px 1px 12px -6px black;
-
   p {
     font-size: 18px;
     padding: 4px;
@@ -138,6 +137,9 @@ export const MainHeader = styled.div`
   justify-content: space-between;
   padding: 16px;
   background: white;
+  @media (max-width: 720px) {
+    overflow: hidden;
+  }
   .buttonContainer {
     display: flex;
     align-items: center;
@@ -244,12 +246,16 @@ export const MastHeadContainer = styled.div`
   }
   background: linear-gradient(135deg, #ff8400 0%, #e9682c 100%);
   h1 {
-    font-size: 70px;
+    font-size: clamp(26px, 5vw, 70px);
     font-weight: 800;
     color: #fff;
     width: 85%;
     line-height: 6rem;
     margin-top: 30px;
+    @media (max-width: 720px) {
+      line-height: unset;
+      width: 100%;
+    }
   }
   .breadcrumbs {
     display: flex;
@@ -265,6 +271,9 @@ export const MastHeadContainer = styled.div`
       position: unset;
       rotate: -90deg;
       opacity: 0.47;
+    }
+    @media (max-width: 720px) {
+      left: 10px;
     }
   }
   a,
@@ -292,6 +301,12 @@ export const MastHeadContainer = styled.div`
       color: #595959;
       &:before {
         width: 100%;
+      }
+    }
+    &.returnTag {
+      img {
+        rotate: 90deg;
+        opacity: 0.7;
       }
     }
   }
@@ -332,6 +347,9 @@ export const MastHeadContainer = styled.div`
     }
   }
   overflow: hidden;
+  @media (max-width: 768px) {
+    padding: 20px 12px 40px;
+  }
 `;
 
 export const NavMenuCol = styled.div`
@@ -340,6 +358,24 @@ export const NavMenuCol = styled.div`
     color: #100849;
     font-weight: bold;
     font-size: 36px;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      bottom: 2px;
+      background-color: #29aaa6;
+      width: 0;
+      transition: width 250ms linear;
+      height: 2px;
+      border-radius: 3px;
+    }
+    &:hover {
+      color: #29aaa6;
+      &:before {
+        width: 200px;
+      }
+    }
   }
   .seperator {
     margin: 16px 0px 20px;
@@ -347,8 +383,8 @@ export const NavMenuCol = styled.div`
     letter-spacing: 4px;
     color: orange;
   }
-  ,
   .menuContainer a {
+    pointer-events: auto;
     &:before {
       content: "";
       position: absolute;
@@ -371,4 +407,216 @@ export const NavMenuCol = styled.div`
 
 export const ItemContainer = styled.div`
   position: relative;
+`;
+
+export const ImageContainer = styled.div`
+  position: relative;
+  padding-top: 37%;
+  width: 74%;
+  margin: 40px 0 0 50px;
+  @media(max-width:720px){
+
+    position: relative;
+    padding-top: 50%;
+    width: 90%;
+    margin: 30px auto 0px;
+  }
+  span {
+    position: unset !important;
+  }
+  img {
+    object-fit:fill !important;
+    height: 100%; !important;
+  }
+`;
+
+export const Footer = styled.footer`
+  background-color: #000;
+  color: white;
+  padding: 3%;
+  font-family: sans-serif;
+  line-height: 2;
+  letter-spacing: 1px;
+`;
+
+export const TopFooter = styled.div`
+  padding: 3%;
+  .footer {
+    display: flex;
+  }
+  .footer-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+  }
+  .footer-img {
+    width: 300px;
+  }
+  .footer-btn {
+    width: 42%;
+    color: #ff8400;
+    background-color: white;
+    padding: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    border-radius: 30px;
+    text-align: center;
+    margin-top: 2rem;
+  }
+  .about {
+    display: flex;
+    justify-content: space-between;
+  }
+  h4 {
+    color: #ff8400;
+    font-size: 19px;
+  }
+  .footer-link {
+    width: 45%;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .Social-links {
+    display: flex;
+  }
+
+  @media (max-width: 400px) {
+    .desktop-only {
+      display: none;
+    }
+    .footer {
+      display: flex;
+      flex-direction: column;
+    }
+    .footer-left {
+      width: 100%;
+      align-items: center;
+    }
+    .footer-right {
+      width: 100% !important;
+      align-items: center;
+    }
+    .footer-btn {
+      width: 100%;
+      color: #ff8400;
+      background-color: white;
+      padding: 15px;
+      font-size: 20px;
+      font-weight: 500;
+      border-radius: 30px;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .footer-link {
+      width: 45%;
+      align-items: center;
+    }
+    .about {
+      width: 100%;
+    }
+  }
+  .directionBtn {
+    position: relative;
+    cursor: pointer;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      bottom: 2px;
+      background-color: #5feae6;
+      width: 0;
+      transition: width 250ms linear;
+      height: 2px;
+      border-radius: 3px;
+    }
+    &:hover {
+      color: #5feae6;
+      &:before {
+        width: 80%;
+      }
+    }
+  }
+  .footerLinks {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0px;
+      bottom: -2px;
+      background-color: orange;
+      width: 0;
+      transition: width 250ms linear;
+      height: 2px;
+      border-radius: 3px;
+    }
+    &:hover {
+      color: orange;
+      &:before {
+        width: 100%;
+      }
+    }
+  }
+`;
+
+export const BottomFooter = styled.div`
+  .links {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+  .bottom-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+  }
+  .copyright {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  li,
+  p {
+    padding: 0px 10px;
+    color: rgba(255, 255, 255, 0.6);
+  }
+  .back-top-btn {
+    width: 16%;
+    background-color: white;
+    border-radius: 3rem;
+    font-size: 18px;
+    color: #ff8400;
+    transition: all 0.4s linear;
+    &:hover {
+      border: black;
+      color: black;
+    }
+  }
+  @media (max-width: 400px) {
+    .bottom-links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .copyright {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .back-top-btn {
+      padding: 10px;
+      width: 50%;
+      background-color: white;
+      border-radius: 3rem;
+      font-size: 18px;
+      color: #ff8400;
+    }
+  }
 `;

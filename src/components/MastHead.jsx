@@ -5,6 +5,9 @@ import React from "react";
 const TopMasthead = (props) => {
   const { postData, showSearchBar } = props;
   let breadcrumbs = [...breadCrumbsData];
+  const isDesktopUser = () => {
+    return typeof window !== "undefined" && window.innerWidth >= 720;
+  };
   breadcrumbs.push({
     crumb: postData?.title?.rendered,
     link: postData?.link,
@@ -18,23 +21,33 @@ const TopMasthead = (props) => {
       />
       <div className="inner">
         <div className="breadcrumbs">
-          {breadcrumbs?.map((item, index) => {
-            return (
-              <>
-                {item.link ? (
-                  <a href={item?.link}>{item?.crumb}</a>
-                ) : (
-                  <p>{item?.crumb}</p>
-                )}
-                {index < breadcrumbs?.length - 1 && (
-                  <img
-                    src="https://images.myloapp.in/NestJsUploads/1683006324692-1668773844547-arrowforward_sWR7ZFijx.svg"
-                    alt=""
-                  />
-                )}
-              </>
-            );
-          })}
+          {isDesktopUser() ? (
+            breadcrumbs?.map((item, index) => {
+              return (
+                <>
+                  {item.link ? (
+                    <a href={item?.link}>{item?.crumb}</a>
+                  ) : (
+                    <p>{item?.crumb}</p>
+                  )}
+                  {index < breadcrumbs?.length - 1 && (
+                    <img
+                      src="https://images.myloapp.in/NestJsUploads/1683006324692-1668773844547-arrowforward_sWR7ZFijx.svg"
+                      alt=""
+                    />
+                  )}
+                </>
+              );
+            })
+          ) : (
+            <a className="returnTag" href="#">
+              <img
+                src="https://images.myloapp.in/NestJsUploads/1683006324692-1668773844547-arrowforward_sWR7ZFijx.svg"
+                alt=""
+              />{" "}
+              Return to
+            </a>
+          )}
         </div>
         <h1>{postData?.title?.rendered}</h1>
       </div>

@@ -1,3 +1,5 @@
+import Banner from "@/components/Banner";
+import MainFooter from "@/components/Footer";
 import TopMasthead from "@/components/MastHead";
 import MastHead from "@/components/MastHead";
 import StickyHeader from "@/components/StickyHeader";
@@ -12,6 +14,7 @@ const Posts = (props) => {
   useEffect(() => {
     setData(postData);
   }, [postData]);
+  const bannerImg = postData?.yoast_head_json?.og_image?.url;
   return (
     <>
       {data && (
@@ -22,11 +25,14 @@ const Posts = (props) => {
             postData={postData}
           />
           <TopMasthead showSearchBar={showSearchBar} postData={postData} />
+          {bannerImg && <Banner bannerImg={bannerImg} />}
+
           <MainContainer>
             <div
               dangerouslySetInnerHTML={{ __html: postData?.content?.rendered }}
             />
           </MainContainer>
+          <MainFooter />
         </>
       )}
     </>

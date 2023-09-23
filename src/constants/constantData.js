@@ -154,3 +154,26 @@ export const breadCrumbsData = [
     link: "https://www.greyorange.com/insights/blog/",
   },
 ];
+
+export const footerData = {
+  Headquarters: "660 Hembree Parkway Suite 120 Roswell, GA 30076",
+  About: [
+    "Expertise",
+    "Leadership Team",
+    "Corporate Social Responsibility",
+    "Why GreyOrange",
+    "Join Our Team",
+  ],
+  Resources: [
+    "Automation Blog",
+    "Events & Webinars",
+    "Industry News",
+    "Press Releases",
+    "Resource Library",
+  ],
+  Solutions: ["By Industry", "By Function", "By Technology"],
+};
+
+export const getDireactionButton = "Get Directions ->";
+
+export const contactUs = "Contact Us";

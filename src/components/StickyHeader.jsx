@@ -6,9 +6,10 @@ const StickyHeader = ({ postData, showSearchBar, setShowSearchBar }) => {
   return (
     <StickyTop>
       <TopStrip>
-        <p>Gartner® Research Predicts 2023: Supply Chain Technology</p>
-        <span className="partition"></span>
-        <span className="readMore">Read the report</span>
+        <p>
+          Gartner® Research Predicts 2023: Supply Chain Technology |{" "}
+          <span className="readMore">Read the report</span>{" "}
+        </p>
       </TopStrip>
       <NavbarNew
         showSearchBar={showSearchBar}
