@@ -15,7 +15,7 @@ export async function getServerSideProps() {
   };
 }
 
-const products = (props) => {
+const Products = (props) => {
   const productsData = props?.products?.data;
   const router = useRouter();
   const navigateToPDP = (pid) => {
@@ -85,4 +85,4 @@ const products = (props) => {
   );
 };
 
-export default products;
+export default Products;

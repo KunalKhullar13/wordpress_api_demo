@@ -29,9 +29,9 @@ const NavbarNew = ({ postData, setShowSearchBar, showSearchBar }) => {
       />
 
       <div className="headerLinks">
-        {headerData?.map((item) => {
+        {headerData?.map((item, index) => {
           return (
-            <a href={item?.link} className="anchor">
+            <a key={"link" + index} href={item?.link} className="anchor">
               {item?.heading}{" "}
               <img
                 src="https://images.myloapp.in/NestJsUploads/1683006324692-1668773844547-arrowforward_sWR7ZFijx.svg"
@@ -44,13 +44,16 @@ const NavbarNew = ({ postData, setShowSearchBar, showSearchBar }) => {
                   {item?.subMenu?.map((subLink) => {
                     if (subLink?.title) {
                       return (
-                        <NavMenuCol>
+                        <NavMenuCol key={"innerLink" + index}>
                           <h3 className="subMenuTitle">{subLink?.title}</h3>
                           <span className="seperator">....</span>
                           <div className="menuContainer">
                             {subLink?.data?.map((element) => {
                               return (
-                                <a href={element?.link || "#"}>
+                                <a
+                                  key={element?.heading}
+                                  href={element?.link || "#"}
+                                >
                                   {element?.heading}
                                 </a>
                               );

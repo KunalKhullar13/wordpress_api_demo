@@ -10,7 +10,7 @@ const MobileNav = ({ showMobileNav }) => {
       {headerData?.map((item, index) => {
         return (
           <>
-            <p className="navLinkMain">
+            <p key={"mobileNav" + index} className="navLinkMain">
               <a
                 className={
                   triggerDropdown == index + 1 ? " text-orange-500" : ""
@@ -43,7 +43,10 @@ const MobileNav = ({ showMobileNav }) => {
                 ? item?.subMenu?.map((innerItems, innerIndex) => {
                     return (
                       <>
-                        <p className="navLinkMain pr-3">
+                        <p
+                          key={"mobileinner" + innerIndex}
+                          className="navLinkMain pr-3"
+                        >
                           <a
                             className={
                               innerDropDown === "inner" + innerIndex + 1
@@ -80,7 +83,7 @@ const MobileNav = ({ showMobileNav }) => {
                           }
                         >
                           {innerItems?.data?.map((element) => {
-                            return <p>{element.heading}</p>;
+                            return <p key={"nav" + index}>{element.heading}</p>;
                           })}
                         </div>
                       </>
@@ -88,7 +91,9 @@ const MobileNav = ({ showMobileNav }) => {
                   })
                 : item?.subMenu?.length > 0 &&
                   item?.subMenu?.map((innerItem) => {
-                    return <p>{innerItem?.heading}</p>;
+                    return (
+                      <p key={"innerNav" + innerIndex}>{innerItem?.heading}</p>
+                    );
                   })}
             </div>
           </>

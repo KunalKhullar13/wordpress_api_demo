@@ -26,9 +26,11 @@ const TopMasthead = (props) => {
               return (
                 <>
                   {item.link ? (
-                    <a href={item?.link}>{item?.crumb}</a>
+                    <a key={"breadcrumb" + index} href={item?.link}>
+                      {item?.crumb}
+                    </a>
                   ) : (
-                    <p>{item?.crumb}</p>
+                    <p key={"breadcrumb" + index}>{item?.crumb}</p>
                   )}
                   {index < breadcrumbs?.length - 1 && (
                     <img

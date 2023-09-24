@@ -14,9 +14,9 @@ const PopularPosts = () => {
         <div class="posts">
           <h3>Popular Posts</h3>
           <ul>
-            {popularPosts?.map((item) => {
+            {popularPosts?.map((item, index) => {
               return (
-                <li>
+                <li key={"post" + index}>
                   <a href="#">{item}</a>
                 </li>
               );
