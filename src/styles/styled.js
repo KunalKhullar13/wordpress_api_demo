@@ -4,8 +4,6 @@ export const MainContainer = styled.div`
   font-family: sans-serif;
   box-sizing: border-box;
   padding: 52px;
-  width: 75%;
-
   h2 {
     font-size: clamp(26px, 2vw, 40px);
     margin: 0px 0px 15px;
@@ -59,7 +57,9 @@ export const MainContainer = styled.div`
 export const StickyTop = styled.div`
   position: sticky;
   z-index: 10;
-  top: 0;
+  transition: all 0.3s linear;
+  top: ${(props) => props.showHeader};
+  box-shadow: 1px 1px 12px -8px;
 `;
 
 export const TopStrip = styled.div`
@@ -137,8 +137,11 @@ export const MainHeader = styled.div`
   justify-content: space-between;
   padding: 16px;
   background: white;
-  @media (max-width: 720px) {
-    overflow: hidden;
+  position: relative;
+  .logoImg {
+    @media (max-width: 720px) {
+      width: 50%;
+    }
   }
   .buttonContainer {
     display: flex;
@@ -146,6 +149,9 @@ export const MainHeader = styled.div`
     column-gap: 20px;
   }
   .headerLinks {
+    @media (max-width: 720px) {
+      display: none;
+    }
     display: flex;
     column-gap: 20px;
     a {
@@ -208,6 +214,9 @@ export const HeaderButtons = styled.button`
     background-position: 100% 0;
   }
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SearchBarContainer = styled.div`
@@ -218,18 +227,10 @@ export const SearchBarContainer = styled.div`
       width: 100%;
       cursor: pointer;
       opacity: 0.6;
+      @media (max-width: 720px) {
+        cursor: default;
+      }
     }
-  }
-
-  .searchbarMain {
-    position: absolute;
-    background: white;
-    padding: 10px;
-    border-radius: 20px;
-    transition: all 0.5s linear;
-    top: 100px;
-    left: ${(props) => (props.showSearchBar ? "-50%" : "1000%")};
-    z-index: 10;
   }
 `;
 
@@ -345,6 +346,10 @@ export const MastHeadContainer = styled.div`
         outline: 1px solid #5feae6;
       }
     }
+    @media (max-width: 720px) {
+      left: ${(props) => (props.showSearchBar ? "3%" : "100%")};
+      width: 94%;
+    }
   }
   overflow: hidden;
   @media (max-width: 768px) {
@@ -411,8 +416,8 @@ export const ItemContainer = styled.div`
 
 export const ImageContainer = styled.div`
   position: relative;
-  padding-top: 37%;
-  width: 74%;
+  padding-top: 45%;
+  width: 90%;
   margin: 40px 0 0 50px;
   @media(max-width:720px){
 
@@ -594,7 +599,7 @@ export const BottomFooter = styled.div`
       color: black;
     }
   }
-  @media (max-width: 400px) {
+  @media (max-width: 720px) {
     .bottom-links {
       display: flex;
       flex-direction: column;
@@ -613,10 +618,156 @@ export const BottomFooter = styled.div`
     .back-top-btn {
       padding: 10px;
       width: 50%;
-      background-color: white;
+      background-color: transparent;
       border-radius: 3rem;
       font-size: 18px;
       color: #ff8400;
+      border: 1px solid orange;
+      cursor: default;
+    }
+  }
+`;
+
+export const HamBurger = styled.div`
+  @media (min-width: 720px) {
+    display: none;
+  }
+`;
+export const MobileNavContainer = styled.div`
+    height: 90vh;
+    position: absolute;
+    top: 68px;
+    background: white;
+    padding: 10px 0px;
+    z-index: 100;
+    width: 100%;
+    left: 0;
+    transition: all 0.3s  linear;
+    overflow: auto;
+    padding-bottom:200px;
+}
+  button {
+    width: 100%;
+    background: #ff8400;
+    text-align: center;
+    color: white;
+    padding: 16px;
+    position: fixed;
+    top: 92vh;
+    font-size: 16px;
+  }
+  img {
+    width: 16px;
+    transition: all 0.3s linear;
+  }
+  .navLinkMain {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    justify-content: space-between;
+    a {
+        opacity: 0.7;
+        font-size: 22px;
+    }
+  }
+  .innerMenu {
+    border-top: 2px solid #ff8400;
+    width: 90%;
+    margin: auto;
+    background: #eee;
+    padding: 8px 0px 10px 10px;
+    font-size: 18px;
+    color: rgba(0,0,0,0.7);
+    p {
+        padding: 8px 0;
+    }
+    
+  }
+  .innerSubMenu {
+    p {
+        color: rgba(0,0,0,0.46);
+        font-size: 18px;
+        padding-left: 10px;
+    }
+    border-top: 2px solid #0000ff7d;
+  }
+  .innerMenu a {
+    font-size: 20px;
+}
+`;
+
+export const PopularPostSection = styled.div`
+  margin-top: 60px;
+  .container {
+    width: 90%;
+  }
+  input {
+    padding: 15px;
+    border-radius: 70px;
+    width: 90%;
+    border: 1px solid #595959;
+    font-size: 16px;
+  }
+  select {
+    margin: 30px 0px;
+    padding: 15px;
+    border-radius: 70px;
+    width: 100%;
+    border: 1px solid #595959;
+    font-size: 16px;
+  }
+  option {
+    padding: 25px;
+    border-radius: 70px;
+    width: 100%;
+    border: 1px solid #595959;
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  li {
+    line-height: 32px;
+  }
+  li a {
+    font-size: 18px;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+  ul {
+    list-style: disc;
+    padding: 20px 0px 20px 45px;
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 500;
+  }
+  .posts {
+    padding: 0px 20px;
+  }
+  button {
+    padding: 10px 30px;
+    font-size: 20px;
+    background-color: #ff8400;
+    border-radius: 30px;
+    color: white;
+    border: none;
+    margin-top: 20px;
+  }
+`;
+
+export const PostDataContainer = styled.div`
+  display: flex;
+  align-items: flex-start;
+  .leftSection {
+    flex-basis: 70%;
+    @media (max-width: 720px) {
+      flex-basis: 100%;
+    }
+  }
+  .rightSection {
+    flex-basis: 25%;
+    @media (max-width: 720px) {
+      display: none;
     }
   }
 `;

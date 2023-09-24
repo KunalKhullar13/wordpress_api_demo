@@ -177,3 +177,12 @@ export const footerData = {
 export const getDireactionButton = "Get Directions ->";
 
 export const contactUs = "Contact Us";
+
+export const popularPosts = [
+  "The History of Robotics In the Warehouse",
+  "Why Does a Warehouse Need a Management System?",
+  "Is Main Street reinventing itself with authentic automation?",
+  `Flexibility at Work: A new talent landscape in the supply chain
+– Part III of a conversation with Charlie Saffro`,
+  "What Is Robots As A Service (RaaS)?",
+];

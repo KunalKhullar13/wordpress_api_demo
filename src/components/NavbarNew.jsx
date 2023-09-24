@@ -1,19 +1,31 @@
 import { headerData } from "@/constants/constantData";
 import {
+  HamBurger,
   HeaderButtons,
   MainHeader,
+  MobileNavContainer,
   NavMenuCol,
   NavSubMenu,
 } from "@/styles/styled";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SearchSection from "./SearchSection";
+import MobileNav from "./MobileNav";
 
 const NavbarNew = ({ postData, setShowSearchBar, showSearchBar }) => {
+  const [showMobileNav, setShowMobileNav] = useState(false);
+  useEffect(() => {
+    if (showMobileNav) {
+      document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    } else {
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    }
+  }, [showMobileNav]);
   return (
     <MainHeader>
       <img
         src="https://www.greyorange.com/wp-content/uploads/2022/09/greyorange-logo.png"
         alt="logo"
+        className="logoImg"
       />
 
       <div className="headerLinks">
@@ -60,9 +72,19 @@ const NavbarNew = ({ postData, setShowSearchBar, showSearchBar }) => {
           showSearchBar={showSearchBar}
           setShowSearchBar={setShowSearchBar}
         />
+        <HamBurger>
+          <img
+            src="https://images.myloapp.in/NestJsUploads/1682585270679-hamburger.svg"
+            alt=""
+            onClick={() => {
+              setShowMobileNav((prev) => !prev);
+            }}
+          />
+        </HamBurger>
         <HeaderButtons contact={true}>Contact Us</HeaderButtons>
         <HeaderButtons>Request a demo</HeaderButtons>
       </div>
+      {showMobileNav && <MobileNav />}
     </MainHeader>
   );
 };
