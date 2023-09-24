@@ -90,7 +90,7 @@ const MobileNav = ({ showMobileNav }) => {
                     );
                   })
                 : item?.subMenu?.length > 0 &&
-                  item?.subMenu?.map((innerItem) => {
+                  item?.subMenu?.map((innerItem, innerIndex) => {
                     return (
                       <p key={"innerNav" + innerIndex}>{innerItem?.heading}</p>
                     );
