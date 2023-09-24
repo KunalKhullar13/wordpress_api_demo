@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
@@ -12,18 +13,18 @@ const Navbar = () => {
           />
         </a>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <a href="/" className="mr-5 hover:text-gray-900">
+          <Link href="/" className="mr-5 hover:text-gray-900">
             Home
-          </a>
-          <a href="/about" className="mr-5 hover:text-gray-900">
+          </Link>
+          <Link href="/about" className="mr-5 hover:text-gray-900">
             About
-          </a>
-          <a href="/products" className="mr-5 hover:text-gray-900">
+          </Link>
+          <Link href="/products" className="mr-5 hover:text-gray-900">
             Products
-          </a>
-          <a href="/contact" className="mr-5 hover:text-gray-900">
+          </Link>
+          <Link href="/contact" className="mr-5 hover:text-gray-900">
             Contact Us
-          </a>
+          </Link>
         </nav>
         <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
           Login
